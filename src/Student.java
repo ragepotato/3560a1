@@ -29,11 +29,16 @@ class Student {
     }
 
     void setStudentAnswer(Question question) { //given the TYPE of question, could return a single or multiple types of answers
+        //regardless, stores answer(s) in studentAnswer, an ArrayList
         this.studentAnswer = question.pickAnswer();
     }
 
 
+    Question getWhichQuestion() {
+        return whichQuestion;
+    }
 
-
-
+    void setWhichQuestion(Question whichQuestion) {
+        this.whichQuestion = whichQuestion;
+    }
 }

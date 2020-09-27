@@ -1,24 +1,25 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-class SingleChoiceQuestion extends Question { //hierarchy, inherited by Question
+class SingleChoiceQuestion implements Question { //implements methods in Question but for multiple answers
+    //methods have to be public
     private String[] answerChoices;
 
     SingleChoiceQuestion(String[] answerChoices) {
         this.answerChoices = answerChoices;
     }
 
-    String[] getAnswerChoices(){
+    public String[] getAnswerChoices(){
         return answerChoices;
     }
 
-    void setAnswerChoices(String[] answerChoices){
+    public void setAnswerChoices(String[] answerChoices){
         this.answerChoices = answerChoices;
     }
 
 
 
-    ArrayList pickAnswer() {
+    public ArrayList pickAnswer() {
         Random r = new Random();
         ArrayList<String> pickedAnswer = new ArrayList<String>();
         pickedAnswer.add(answerChoices[r.nextInt(answerChoices.length)]);

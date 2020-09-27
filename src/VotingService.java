@@ -5,7 +5,7 @@ public class VotingService {
     private HashMap iVote;
 
 
-    VotingService(Question votingAnswers) {
+    VotingService(Question votingAnswers) { //configured by question type
         this.votingAnswers = votingAnswers;
         this.iVote = new HashMap<String, String[]>();
     }
@@ -25,7 +25,8 @@ public class VotingService {
     }
 
     void setiVote(String studentID, ArrayList studentAnswer) {
-        // System.out.println(studentID + " --- " + Arrays.toString(studentAnswer));
+        //student id's are key in hashmap, arraylist of that student's answer(s) is value
+        //because hashmap, only last student answer is in here
         iVote.put(studentID, studentAnswer);
     }
 
@@ -35,23 +36,24 @@ public class VotingService {
     }
 
     void getResults() {
-        System.out.println("IVote size: " + getIVoteSize());
+        System.out.println("Number of students voted size: " + getIVoteSize());
 
-        for (int i = 0; i < votingAnswers.getAnswerChoices().length; i++) {
+        for (int i = 0; i < votingAnswers.getAnswerChoices().length; i++) { //for each of the possible answers
 
             String answerChoice = votingAnswers.getAnswerChoices()[i];
 
             Iterator voteIterator = iVote.entrySet().iterator();
             int count = 0;
-            while (voteIterator.hasNext()) {
+            while (voteIterator.hasNext()) {  //iterate through hashmap
 
-                Map.Entry mapElement = (Map.Entry) voteIterator.next();
+                Map.Entry mapElement = (Map.Entry) voteIterator.next(); //for each arraylist in the hashmap
 
                 count += Collections.frequency((Collection<?>) mapElement.getValue(), answerChoice);
+                //find the frequency of that specific answer, add them together
 
             }
 
-            System.out.println(answerChoice + ": " + count);
+            System.out.println(answerChoice + ": " + count); //total number of times that answer appears
 
         }
 
