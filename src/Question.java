@@ -1,16 +1,18 @@
-abstract class Question {
+import java.util.ArrayList;
+
+abstract class Question { //this class must be abstract because we use an abstract method
+    //split question into two: those that have one answer (SingleChoiceQuestion) and those where you can choose multiple (MultipleChoiceQuestion)
     private String[] answerChoices;
 
-
-
-    public Question() {
-
+    String[] getAnswerChoices(){
+        return answerChoices;
     }
 
-    abstract String[] getAnswerChoices();
+    void setAnswerChoices(String[] answerChoices){
+        this.answerChoices = answerChoices;
+    }
 
-    abstract void setAnswerChoices(String[] answerChoices);
-     abstract String[] pickAnswer();
+    abstract ArrayList pickAnswer(); //no need to implement this in parent class because both child classes have different implementations
 
 
 

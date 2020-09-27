@@ -1,34 +1,34 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-public class Student {
+class Student {
     private String uniqueID;
-    private String[] studentAnswer;
+    private ArrayList studentAnswer;
     private Question whichQuestion;
 
 
-    public Student(Question whichQuestion) {
-        this.uniqueID = UUID.randomUUID().toString().replace("-", "");
+    Student(Question whichQuestion) {
+        this.uniqueID = UUID.randomUUID().toString().replace("-", ""); //each student has unique UUID
         this.whichQuestion = whichQuestion;
 
         setStudentAnswer(whichQuestion);
     }
 
 
-    public String getUniqueID() {
+    String getUniqueID() {
         return uniqueID;
     }
 
-    public void setUniqueID(String uniqueID) {
+    void setUniqueID(String uniqueID) {
         this.uniqueID = uniqueID;
     }
 
-    public String[] getStudentAnswer() {
+    ArrayList getStudentAnswer() {
         return studentAnswer;
     }
 
-    public void setStudentAnswer(Question question) {
-
+    void setStudentAnswer(Question question) { //given the TYPE of question, could return a single or multiple types of answers
         this.studentAnswer = question.pickAnswer();
     }
 

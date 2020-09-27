@@ -1,29 +1,35 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class MultiChoiceQuestion extends Question{
+class MultiChoiceQuestion extends Question{ //hierarchy, inherited by Question
     private String[] answerChoices;
 
-    public MultiChoiceQuestion(String[] answerChoices) {
-
+    MultiChoiceQuestion(String[] answerChoices) {
         this.answerChoices = answerChoices;
     }
 
-    public String[] getAnswerChoices() {
+    String[] getAnswerChoices(){
         return answerChoices;
     }
 
-    public void setAnswerChoices(String[] answerChoices) {
+    void setAnswerChoices(String[] answerChoices){
         this.answerChoices = answerChoices;
     }
 
-    public String[] pickAnswer(){
+    ArrayList pickAnswer(){
         Random r = new Random();
-        String[] pickedAnswer = new String[]{answerChoices[r.nextInt(answerChoices.length)]};
+        ArrayList<String> pickedAnswer = new ArrayList<String>();
+        int howMany = r.nextInt(answerChoices.length) + 1; //multiple choice- how many answers?
+        System.out.println("How many: " + howMany);
+        for (int i = 0; i< howMany; i++){
+            String temp = answerChoices[r.nextInt(answerChoices.length)]; //pick a random string
+            if (!pickedAnswer.contains(temp)){//if not one of student's answers already, make it one
 
-
-
-        return  pickedAnswer;
+                pickedAnswer.add(temp);
+            }
+        }
+        return pickedAnswer;
     }
 
 

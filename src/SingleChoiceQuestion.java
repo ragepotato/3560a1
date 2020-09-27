@@ -1,24 +1,28 @@
+import java.util.ArrayList;
 import java.util.Random;
 
-public class SingleChoiceQuestion extends Question {
+class SingleChoiceQuestion extends Question { //hierarchy, inherited by Question
     private String[] answerChoices;
 
-    public SingleChoiceQuestion(String[] answerChoices) {
+    SingleChoiceQuestion(String[] answerChoices) {
         this.answerChoices = answerChoices;
     }
 
-    public String[] getAnswerChoices() {
+    String[] getAnswerChoices(){
         return answerChoices;
     }
 
-    public void setAnswerChoices(String[] answerChoices) {
+    void setAnswerChoices(String[] answerChoices){
         this.answerChoices = answerChoices;
     }
 
-    public String[] pickAnswer(){
-        Random r = new Random();
 
-        return new String[]{answerChoices[r.nextInt(answerChoices.length)]};
+
+    ArrayList pickAnswer() {
+        Random r = new Random();
+        ArrayList<String> pickedAnswer = new ArrayList<String>();
+        pickedAnswer.add(answerChoices[r.nextInt(answerChoices.length)]);
+        return pickedAnswer;
     }
 
 }
